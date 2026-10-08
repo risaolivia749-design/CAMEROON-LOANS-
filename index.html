@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>MTN Loans Cameroon - Educational Prototype</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f5f5;
+      color: #222;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .logo {
+      width: 70px;
+      height: 70px;
+      margin: auto;
+      background: #ffcc00;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 25px;
+      font-weight: bold;
+    }
+
+    h1 {
+      margin-top: 12px;
+      font-size: 25px;
+    }
+
+    .subtitle {
+      color: #666;
+      margin-top: 5px;
+    }
+
+    .demo {
+      background: #fff4cc;
+      border: 1px solid #e6c84f;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 13px;
+    }
+
+    label {
+      display: block;
+      margin-top: 16px;
+      margin-bottom: 6px;
+      font-weight: bold;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .amount-info {
+      margin-top: 6px;
+      font-size: 13px;
+      color: #666;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 25px;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      background: #ffcc00;
+      color: #111;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #e6b800;
+    }
+
+    .success {
+      display: none;
+      margin-top: 20px;
+      padding: 18px;
+      border-radius: 8px;
+      background: #e9f8ed;
+      border: 1px solid #8ac99a;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 25px;
+      color: #777;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="header">
+      <div class="logo">MTN</div>
+
+      <h1>MTN Loans Cameroon</h1>
+
+      <p class="subtitle">
+        Loan Application
+      </p>
+    </div>
+
+    <div class="demo">
+      <strong>Educational Prototype</strong><br>
+      This is a demonstration version of the loan application system.
+      Do not submit real personal or financial information.
+    </div>
+
+    <form id="loanForm">
+
+      <label for="name">Full Name</label>
+      <input
+        type="text"
+        id="name"
+        placeholder="Enter your full name"
+        required
+      >
+
+      <label for="phone">Phone Number</label>
+      <input
+        type="tel"
+        id="phone"
+        placeholder="Example: 6XXXXXXXX"
+        required
+      >
+
+      <label for="telegram">Telegram Username</label>
+      <input
+        type="text"
+        id="telegram"
+        placeholder="@username"
+        required
+      >
+
+      <label for="amount">Loan Amount (FCFA)</label>
+      <input
+        type="number"
+        id="amount"
+        min="5000"
+        max="500000"
+        step="5000"
+        placeholder="Enter amount"
+        required
+      >
+
+      <p class="amount-info">
+        Minimum: 5,000 FCFA &nbsp; | &nbsp;
+        Maximum: 500,000 FCFA
+      </p>
+
+      <label for="period">Repayment Period</label>
+
+      <select id="period" required>
+        <option value="">Select repayment period</option>
+        <option value="1">1 Month</option>
+        <option value="2">2 Months</option>
+        <option value="3">3 Months</option>
+        <option value="4">4 Months</option>
+        <option value="5">5 Months</option>
+        <option value="6">6 Months</option>
+      </select>
+
+      <label for="purpose">Purpose of Loan</label>
+
+      <select id="purpose" required>
+        <option value="">Select purpose</option>
+        <option>Business</option>
+        <option>Education</option>
+        <option>Emergency</option>
+        <option>Personal needs</option>
+        <option>Other</option>
+      </select>
+
+      <button type="submit">
+        APPLY FOR LOAN
+      </button>
+
+    </form>
+
+    <div class="success" id="successMessage">
+
+      <h3>Application Received</h3>
+
+      <p style="margin-top:10px;">
+        Your demonstration application has been received.
+      </p>
+
+      <p style="margin-top:10px;">
+        Application ID:
+        <strong id="applicationId"></strong>
+      </p>
+
+      <p style="margin-top:10px;">
+        In the full system, this application would be sent to the
+        administrator for verification.
+      </p>
+
+    </div>
+
+    <div class="footer">
+      MTN Loans Cameroon — Educational Prototype
+    </div>
+
+  </div>
+
+
+  <script>
+
+    document
+      .getElementById("loanForm")
+      .addEventListener("submit", function(event) {
+
+        event.preventDefault();
+
+        const amount =
+          Number(document.getElementById("amount").value);
+
+        if (amount < 5000 || amount > 500000) {
+
+          alert(
+            "Loan amount must be between 5,000 and 500,000 FCFA."
+          );
+
+          return;
+        }
+
+        const randomNumber =
+          Math.floor(100000 + Math.random() * 900000);
+
+        const applicationId =
+          "MTN-CM-" + randomNumber;
+
+        document.getElementById("applicationId")
+          .textContent = applicationId;
+
+        document.getElementById("loanForm")
+          .style.display = "none";
+
+        document.getElementById("successMessage")
+          .style.display = "block";
+
+      });
+
+  </script>
+
+</body>
+                                    </html>
