@@ -4,39 +4,64 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>MTN Loans Cameroon</title>
+  <title>MTN Loans Cameroon - Demo</title>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
       background: #f5f5f5;
+      color: #222;
+    }
+
+    .header {
+      background: #ffcc00;
+      padding: 22px 15px;
+      text-align: center;
+      border-bottom: 4px solid #222;
+    }
+
+    .header h1 {
       margin: 0;
-      padding: 20px;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .header p {
+      margin: 6px 0 0;
+      font-size: 14px;
     }
 
     .container {
-      max-width: 500px;
-      margin: auto;
+      max-width: 600px;
+      margin: 25px auto;
+      padding: 0 15px;
+    }
+
+    .card {
       background: white;
       padding: 25px;
       border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 3px 12px rgba(0,0,0,0.12);
     }
 
-    h1 {
-      text-align: center;
-      margin-bottom: 5px;
-    }
-
-    .subtitle {
-      text-align: center;
-      margin-bottom: 25px;
-      color: #555;
+    .notice {
+      background: #fff4c2;
+      border-left: 5px solid #ffcc00;
+      padding: 12px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      line-height: 1.5;
     }
 
     label {
       display: block;
       margin-top: 15px;
+      margin-bottom: 6px;
       font-weight: bold;
     }
 
@@ -44,28 +69,32 @@
     select,
     textarea {
       width: 100%;
-      padding: 12px;
-      margin-top: 6px;
+      padding: 13px;
       border: 1px solid #ccc;
       border-radius: 7px;
-      box-sizing: border-box;
-      font-size: 16px;
+      font-size: 15px;
     }
 
     textarea {
-      min-height: 100px;
+      min-height: 90px;
       resize: vertical;
     }
 
     button {
       width: 100%;
-      margin-top: 20px;
+      margin-top: 22px;
       padding: 14px;
       border: none;
       border-radius: 7px;
+      background: #ffcc00;
+      color: #111;
       font-size: 17px;
       font-weight: bold;
       cursor: pointer;
+    }
+
+    button:hover {
+      background: #e6b800;
     }
 
     button:disabled {
@@ -74,218 +103,259 @@
     }
 
     #message {
-      margin-top: 18px;
-      padding: 12px;
-      border-radius: 7px;
       display: none;
-      text-align: center;
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 7px;
+      font-weight: bold;
+      line-height: 1.5;
     }
 
     .success {
-      background: #e8f7e8;
-      color: #176b17;
+      background: #d9f7df;
+      color: #176b2c;
     }
 
     .error {
-      background: #ffe7e7;
-      color: #a40000;
+      background: #ffdede;
+      color: #9b1c1c;
     }
 
-    .notice {
-      margin-top: 20px;
-      font-size: 13px;
-      color: #666;
+    .footer {
       text-align: center;
+      font-size: 12px;
+      color: #666;
+      margin: 20px 0;
     }
   </style>
 </head>
 
 <body>
 
-<div class="container">
+  <div class="header">
+    <h1>MTN Loans Cameroon</h1>
+    <p>Educational Loan Application Prototype</p>
+  </div>
 
-  <h1>MTN Loans Cameroon</h1>
-  <p class="subtitle">Loan Application Form</p>
+  <div class="container">
 
-  <form id="loanForm">
+    <div class="card">
 
-    <label for="fullName">Full Name</label>
-    <input
-      type="text"
-      id="fullName"
-      required
-      placeholder="Enter your full name"
-    >
+      <div class="notice">
+        <strong>Demo Notice:</strong>
+        This is an educational prototype. Please do not enter real
+        personal, financial, or identification information.
+      </div>
 
-    <label for="phone">Phone Number</label>
-    <input
-      type="tel"
-      id="phone"
-      required
-      placeholder="Example: 6XXXXXXXX"
-    >
+      <h2>Loan Application</h2>
 
-    <label for="loanAmount">Loan Amount</label>
-    <input
-      type="number"
-      id="loanAmount"
-      min="5000"
-      max="500000"
-      required
-      placeholder="5000 - 500000 FCFA"
-    >
+      <form id="loanForm">
 
-    <label for="repaymentPeriod">Repayment Period</label>
-    <select id="repaymentPeriod" required>
-      <option value="">Choose repayment period</option>
-      <option value="1">1 Month</option>
-      <option value="2">2 Months</option>
-      <option value="3">3 Months</option>
-      <option value="4">4 Months</option>
-      <option value="5">5 Months</option>
-      <option value="6">6 Months</option>
-    </select>
+        <label for="full_name">Full Name</label>
+        <input
+          type="text"
+          id="full_name"
+          placeholder="Example: Demo Applicant"
+          required
+        >
 
-    <label for="loanPurpose">Purpose of Loan</label>
-    <textarea
-      id="loanPurpose"
-      required
-      placeholder="Briefly explain why you need the loan"
-    ></textarea>
+        <label for="phone">Phone Number</label>
+        <input
+          type="tel"
+          id="phone"
+          placeholder="Example: 690000000"
+          required
+        >
 
-    <button type="submit" id="submitButton">
-      Submit Application
-    </button>
+        <label for="loan_amount">Loan Amount (FCFA)</label>
+        <input
+          type="number"
+          id="loan_amount"
+          min="5000"
+          max="500000"
+          placeholder="5000 - 500000"
+          required
+        >
 
-  </form>
+        <label for="repayment_period">Repayment Period</label>
+        <select id="repayment_period" required>
+          <option value="">Select period</option>
+          <option value="1">1 Month</option>
+          <option value="2">2 Months</option>
+          <option value="3">3 Months</option>
+          <option value="4">4 Months</option>
+          <option value="5">5 Months</option>
+          <option value="6">6 Months</option>
+        </select>
 
-  <div id="message"></div>
+        <label for="loan_purpose">Loan Purpose</label>
+        <textarea
+          id="loan_purpose"
+          placeholder="Example: Educational demo"
+          required
+        ></textarea>
 
-  <p class="notice">
-    Applications are reviewed manually before approval.
-  </p>
+        <button type="submit" id="submitButton">
+          Submit Application
+        </button>
 
-</div>
+      </form>
 
+      <div id="message"></div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    </div>
 
-<script>
+    <div class="footer">
+      MTN Loans Cameroon — Educational Prototype
+    </div>
 
-  // ==============================
-  // ADD YOUR SUPABASE DETAILS HERE
-  // ==============================
+  </div>
 
-  const SUPABASE_URL =https://onsrpuqiffzxhrjwagrz.supabase.co/rest/v1/;
+  <!-- Supabase library -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-  const SUPABASE_KEY =sb_publishable_X0YDa_Rknxmp3RVav9JHvg_DTh8qeOX;
+  <script>
 
+    // YOUR SUPABASE PROJECT
+    const SUPABASE_URL =
+      "https://onsrpuqiffzxhrjwagrz.supabase.co";
 
-  const { createClient } = window.supabase;
+    // IMPORTANT:
+    // Paste your Supabase PUBLISHABLE key between the quotation marks below.
+    // Do NOT use a secret/service-role key here.
+    const SUPABASE_KEY =
+      "sb_publishable_X0YDa_Rknxmp3RVav9JHvg_DTh8qeOX";
 
-  const supabaseClient = createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-  );
-
-
-  const form = document.getElementById("loanForm");
-
-  const messageBox = document.getElementById("message");
-
-  const submitButton =
-    document.getElementById("submitButton");
-
-
-  form.addEventListener("submit", async function(event) {
-
-    event.preventDefault();
-
-
-    const fullName =
-      document.getElementById("fullName").value.trim();
-
-    const phone =
-      document.getElementById("phone").value.trim();
-
-    const loanAmount =
-      Number(document.getElementById("loanAmount").value);
-
-    const repaymentPeriod =
-      Number(document.getElementById("repaymentPeriod").value);
-
-    const loanPurpose =
-      document.getElementById("loanPurpose").value.trim();
-
-
-    if (loanAmount < 5000 || loanAmount > 500000) {
-
-      showMessage(
-        "Loan amount must be between 5,000 and 500,000 FCFA.",
-        "error"
+    const supabaseClient =
+      window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
       );
 
-      return;
+
+    const form = document.getElementById("loanForm");
+    const message = document.getElementById("message");
+    const submitButton = document.getElementById("submitButton");
+
+
+    function showMessage(text, type) {
+      message.textContent = text;
+      message.className = type;
+      message.style.display = "block";
     }
 
 
-    submitButton.disabled = true;
+    form.addEventListener("submit", async function(event) {
 
-    submitButton.textContent = "Submitting...";
+      event.preventDefault();
+
+      message.style.display = "none";
+
+      const fullName =
+        document.getElementById("full_name").value.trim();
+
+      const phone =
+        document.getElementById("phone").value.trim();
+
+      const loanAmount =
+        Number(document.getElementById("loan_amount").value);
+
+      const repaymentPeriod =
+        Number(document.getElementById("repayment_period").value);
+
+      const loanPurpose =
+        document.getElementById("loan_purpose").value.trim();
 
 
-    const { error } = await supabaseClient
-      .from("loan_applications")
-      .insert([
-        {
-          full_name: fullName,
-          phone: phone,
-          loan_amount: loanAmount,
-          repayment_period: repaymentPeriod,
-          loan_purpose: loanPurpose,
-          status: "pending"
+      if (!fullName || !phone || !loanAmount ||
+          !repaymentPeriod || !loanPurpose) {
+
+        showMessage(
+          "Please complete all fields.",
+          "error"
+        );
+
+        return;
+      }
+
+
+      if (loanAmount < 5000 || loanAmount > 500000) {
+
+        showMessage(
+          "Loan amount must be between 5,000 and 500,000 FCFA.",
+          "error"
+        );
+
+        return;
+      }
+
+
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitting...";
+
+
+      try {
+
+        const { data, error } =
+          await supabaseClient
+            .from("loan_applications")
+            .insert([
+              {
+                full_name: fullName,
+                phone: phone,
+                loan_amount: loanAmount,
+                repayment_period: repaymentPeriod,
+                loan_purpose: loanPurpose,
+                status: "pending"
+              }
+            ])
+            .select();
+
+
+        if (error) {
+
+          console.error("Supabase error:", error);
+
+          showMessage(
+            "Submission failed: " + error.message,
+            "error"
+          );
+
+          return;
         }
-      ]);
 
 
-    if (error) {
-
-      console.error(error);
-
-      showMessage(
-        "Application could not be submitted. Please try again.",
-        "error"
-      );
-
-    } else {
-
-      showMessage(
-        "Application submitted successfully. It is now pending review.",
-        "success"
-      );
-
-      form.reset();
-    }
+        console.log("Application saved:", data);
 
 
-    submitButton.disabled = false;
+        showMessage(
+          "Application submitted successfully. Status: Pending.",
+          "success"
+        );
 
-    submitButton.textContent = "Submit Application";
 
-  });
+        form.reset();
 
 
-  function showMessage(text, type) {
+      } catch (error) {
 
-    messageBox.textContent = text;
+        console.error("Unexpected error:", error);
 
-    messageBox.className = type;
+        showMessage(
+          "Something went wrong. Please check your Supabase configuration.",
+          "error"
+        );
 
-    messageBox.style.display = "block";
+      } finally {
 
-  }
+        submitButton.disabled = false;
+        submitButton.textContent = "Submit Application";
 
-</script>
+      }
+
+    });
+
+  </script>
 
 </body>
 </html>
