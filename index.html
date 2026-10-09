@@ -4,245 +4,687 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Submit a loan application enquiry and request contact from our team.">
-  <title>MTN, Airtel & Orange Loan Applications</title>
+  <meta name="theme-color" content="#075e36">
+
+  <title>Cameroon Loans | Apply Online</title>
+
+  <meta
+    name="description"
+    content="Submit a loan enquiry for review. Choose your mobile network and provide your contact details."
+  >
 
   <style>
-    * { box-sizing: border-box; }
+    :root {
+      --green: #075e36;
+      --green-dark: #034326;
+      --green-light: #eaf6ee;
+      --orange: #f5a623;
+      --text: #1d2935;
+      --muted: #657383;
+      --border: #dce4e8;
+      --white: #ffffff;
+      --background: #f4f7f5;
+      --danger: #b42318;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
-      padding: 24px 14px;
-      font-family: Arial, sans-serif;
-      background: #f3f6fb;
-      color: #172033;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--background);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--green);
+      color: var(--white);
+      padding: 18px 20px;
+    }
+
+    .nav {
+      max-width: 1050px;
+      margin: auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      font-size: 21px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+    }
+
+    .brand span {
+      color: #ffd477;
+    }
+
+    .nav-label {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #075e36, #10834e);
+      color: white;
+      padding: 52px 20px 65px;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 760px;
+      margin: auto;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 5px 12px;
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 30px;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 6vw, 46px);
+      line-height: 1.15;
+      margin: 5px 0 15px;
+    }
+
+    .hero p {
+      max-width: 620px;
+      margin: auto;
+      color: #e6f5eb;
+      font-size: 16px;
     }
 
     .container {
-      max-width: 520px;
-      margin: 25px auto;
-      padding: 28px 22px;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 8px 30px rgba(0,0,0,.08);
+      max-width: 1050px;
+      margin: -30px auto 45px;
+      padding: 0 16px;
+      position: relative;
     }
 
-    h1 { font-size: 25px; margin-top: 0; }
-    .intro { color: #566176; line-height: 1.6; }
+    .network-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 13px;
+      margin-bottom: 24px;
+    }
+
+    .network {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      text-align: center;
+      padding: 19px 10px;
+      box-shadow: 0 5px 20px rgba(15, 40, 25, 0.04);
+    }
+
+    .network strong {
+      display: block;
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+
+    .network small {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .mtn {
+      border-top: 4px solid #ffcc00;
+    }
+
+    .orange {
+      border-top: 4px solid #f28c28;
+    }
+
+    .airtel {
+      border-top: 4px solid #e53935;
+    }
+
+    .form-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 26px;
+      box-shadow: 0 10px 35px rgba(15, 40, 25, 0.06);
+    }
+
+    .form-card h2 {
+      margin: 0 0 5px;
+      font-size: 25px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      margin: 0 0 24px;
+      font-size: 14px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .full {
+      grid-column: 1 / -1;
+    }
 
     label {
-      display: block;
-      margin-top: 18px;
-      margin-bottom: 7px;
-      font-weight: bold;
+      font-weight: 700;
+      font-size: 14px;
     }
 
-    input[type="text"],
-    input[type="tel"],
+    input,
+    select,
     textarea {
-      display: block;
       width: 100%;
-      padding: 13px;
-      border: 1px solid #cbd3df;
-      border-radius: 8px;
+      padding: 13px 14px;
+      border: 1px solid #ccd6dc;
+      border-radius: 9px;
+      background: white;
+      color: var(--text);
       font: inherit;
+      font-size: 15px;
     }
 
-    textarea { min-height: 100px; resize: vertical; }
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 2px solid #8ccbaa;
+      border-color: var(--green);
+    }
+
+    textarea {
+      min-height: 95px;
+      resize: vertical;
+    }
+
+    .hint {
+      font-size: 12px;
+      color: var(--muted);
+    }
 
     .consent {
       display: flex;
-      gap: 10px;
       align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
       font-weight: normal;
-      line-height: 1.5;
+      color: #475467;
     }
 
-    .consent input { margin-top: 4px; }
+    .consent input {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+      margin-top: 3px;
+    }
 
-    button {
+    .submit-btn {
       width: 100%;
-      padding: 14px;
-      margin-top: 22px;
+      padding: 15px;
       border: 0;
-      border-radius: 8px;
-      background: #1769d2;
+      border-radius: 10px;
+      background: var(--green);
       color: white;
       font-size: 16px;
-      font-weight: bold;
+      font-weight: 700;
       cursor: pointer;
+      transition: background 0.2s;
     }
 
-    button:disabled { opacity: .6; cursor: wait; }
+    .submit-btn:hover {
+      background: var(--green-dark);
+    }
 
-    #formMessage {
+    .submit-btn:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    .status {
+      display: none;
+      padding: 13px;
       margin-top: 16px;
-      line-height: 1.5;
+      border-radius: 9px;
+      font-size: 14px;
       overflow-wrap: anywhere;
     }
 
-    .privacy {
-      margin-top: 20px;
-      font-size: 13px;
-      line-height: 1.6;
-      color: #566176;
+    .status.success {
+      display: block;
+      background: #e8f7ed;
+      color: #075e36;
+      border: 1px solid #b9e5c8;
     }
 
-    /* Hidden spam-trap field */
-    .website-field {
+    .status.error {
+      display: block;
+      background: #fff0ef;
+      color: var(--danger);
+      border: 1px solid #f4c5c1;
+    }
+
+    .notice {
+      margin-top: 20px;
+      padding: 14px;
+      background: #fff8e8;
+      border: 1px solid #f3dfad;
+      border-radius: 10px;
+      color: #634c18;
+      font-size: 13px;
+    }
+
+    .info-section {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 25px;
+    }
+
+    .info-item {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 18px;
+    }
+
+    .info-item h3 {
+      margin: 0 0 7px;
+      font-size: 16px;
+    }
+
+    .info-item p {
+      margin: 0;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 18px;
+      background: #eaf0ec;
+      color: #59675f;
+      font-size: 12px;
+    }
+
+    footer p {
+      max-width: 760px;
+      margin: 7px auto;
+    }
+
+    .honeypot {
       position: absolute;
       left: -10000px;
       width: 1px;
       height: 1px;
       overflow: hidden;
     }
+
+    @media (max-width: 650px) {
+      .hero {
+        padding: 42px 18px 55px;
+      }
+
+      .network-grid {
+        gap: 8px;
+      }
+
+      .network {
+        padding: 15px 5px;
+      }
+
+      .network strong {
+        font-size: 14px;
+      }
+
+      .network small {
+        font-size: 10px;
+      }
+
+      .form-card {
+        padding: 20px 16px;
+      }
+
+      .form-grid,
+      .info-section {
+        grid-template-columns: 1fr;
+      }
+
+      .full {
+        grid-column: auto;
+      }
+
+      .brand {
+        font-size: 18px;
+      }
+    }
   </style>
 </head>
 
 <body>
+  <header>
+    <div class="nav">
+      <div class="brand">CAMEROON <span>LOANS</span></div>
+      <div class="nav-label">Online enquiry portal</div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">CAMEROON · LOAN ENQUIRIES</div>
+      <h1>Submit Your Loan Enquiry</h1>
+      <p>
+        Choose your mobile network and submit your contact details.
+        Your enquiry will be received for review. Submitting this form
+        does not guarantee approval or disbursement.
+      </p>
+    </div>
+  </section>
+
   <main class="container">
-    <h1>Loan Application Enquiry</h1>
-
-    <p class="intro">
-      Use this form to request contact about loan services associated
-      with MTN, Airtel or Orange. Submitting an enquiry does not guarantee
-      approval or a loan offer.
-    </p>
-
-    <form id="loanForm">
-      <label for="full_name">Full Name *</label>
-      <input
-        type="text"
-        id="full_name"
-        name="full_name"
-        maxlength="100"
-        autocomplete="name"
-        required
-      >
-
-      <label for="phone">Phone Number *</label>
-      <input
-        type="tel"
-        id="phone"
-        name="phone"
-        maxlength="25"
-        autocomplete="tel"
-        required
-      >
-
-      <label for="details">Additional Details (Optional)</label>
-      <textarea
-        id="details"
-        name="details"
-        maxlength="500"
-        placeholder="Optional information for your enquiry"
-      ></textarea>
-
-      <div class="website-field" aria-hidden="true">
-        <label for="website">Leave this field empty</label>
-        <input
-          type="text"
-          id="website"
-          name="website"
-          tabindex="-1"
-          autocomplete="off"
-        >
+    <section class="network-grid" aria-label="Available mobile networks">
+      <div class="network mtn">
+        <strong>MTN Cameroon</strong>
+        <small>Mobile network option</small>
       </div>
 
-      <label class="consent" for="consent">
-        <input type="checkbox" id="consent" required>
-        <span>
-          I agree that my name and phone number may be used to respond
-          to this enquiry. I understand that my details will be sent
-          to the service administrator through Telegram.
-        </span>
-      </label>
+      <div class="network orange">
+        <strong>Orange Cameroon</strong>
+        <small>Mobile network option</small>
+      </div>
 
-      <button type="submit" id="submitButton">
-        Submit Enquiry
-      </button>
+      <div class="network airtel">
+        <strong>Airtel</strong>
+        <small>Availability must be confirmed</small>
+      </div>
+    </section>
 
-      <p id="formMessage" role="status" aria-live="polite"></p>
-    </form>
+    <section class="form-card">
+      <h2>Application Enquiry</h2>
+      <p class="subtitle">
+        Complete the required fields below. Only your name and phone number
+        are required, along with your consent.
+      </p>
 
-    <p class="privacy">
-      Please provide only the information requested. Read the service's
-      privacy notice and loan terms before proceeding. Never send passwords,
-      PINs, verification codes or mobile-money account credentials.
-    </p>
+      <form id="loanForm">
+        <div class="form-grid">
+          <div class="field">
+            <label for="full_name">Full name *</label>
+            <input
+              id="full_name"
+              name="full_name"
+              type="text"
+              autocomplete="name"
+              minlength="2"
+              maxlength="100"
+              placeholder="Enter your full name"
+              required
+            >
+          </div>
+
+          <div class="field">
+            <label for="phone">Phone number *</label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              autocomplete="tel"
+              inputmode="tel"
+              maxlength="25"
+              placeholder="Enter your phone number"
+              required
+            >
+            <span class="hint">
+              Use a number where you can be contacted.
+            </span>
+          </div>
+
+          <div class="field">
+            <label for="network">Mobile network</label>
+            <select id="network" name="network">
+              <option value="">Select a network (optional)</option>
+              <option value="MTN Cameroon">MTN Cameroon</option>
+              <option value="Orange Cameroon">Orange Cameroon</option>
+              <option value="Airtel">Airtel</option>
+              <option value="Other">Other / Not sure</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="details">Additional details (optional)</label>
+            <input
+              id="details"
+              name="details"
+              type="text"
+              maxlength="500"
+              placeholder="Add a short message, if needed"
+            >
+          </div>
+
+          <div class="field full">
+            <label class="consent" for="consent">
+              <input id="consent" name="consent" type="checkbox" required>
+              <span>
+                I agree that my name, phone number and the optional details
+                I provide may be sent to the website operator through Telegram
+                to respond to my enquiry. I understand that submitting this
+                form does not guarantee a loan.
+              </span>
+            </label>
+          </div>
+
+          <div class="field full honeypot" aria-hidden="true">
+            <label for="website">Leave this field empty</label>
+            <input
+              id="website"
+              name="website"
+              type="text"
+              tabindex="-1"
+              autocomplete="off"
+            >
+          </div>
+
+          <div class="field full">
+            <button class="submit-btn" id="submitBtn" type="submit">
+              Submit Enquiry
+            </button>
+            <div
+              class="status"
+              id="status"
+              role="status"
+              aria-live="polite"
+            ></div>
+          </div>
+        </div>
+      </form>
+
+      <div class="notice">
+        <strong>Important:</strong> Before accepting applications, make sure
+        the operator is legally authorized to offer or arrange loans in the
+        relevant jurisdiction. Clearly disclose eligibility rules, interest,
+        fees, repayment terms and the responsible lender before anyone agrees
+        to a loan. Never send money to unlock a promised loan without
+        independently verifying the lender.
+      </div>
+    </section>
+
+    <section class="info-section">
+      <div class="info-item">
+        <h3>1. Submit details</h3>
+        <p>Provide your name and a reachable phone number.</p>
+      </div>
+
+      <div class="info-item">
+        <h3>2. Enquiry review</h3>
+        <p>The website operator can review the enquiry and contact you.</p>
+      </div>
+
+      <div class="info-item">
+        <h3>3. Confirm the terms</h3>
+        <p>Check the lender, fees, interest and repayment terms before deciding.</p>
+      </div>
+    </section>
   </main>
 
+  <footer>
+    <p><strong>Cameroon Loans</strong> — Loan enquiry website.</p>
+    <p>
+      MTN, Orange and Airtel are listed as mobile network options.
+      This website does not claim to be operated, endorsed or approved by
+      those network providers.
+    </p>
+    <p>
+      Personal information submitted through this form is sent to the
+      website operator's configured Telegram account. Avoid entering
+      passwords, PINs, verification codes, bank details or identity documents.
+    </p>
+  </footer>
+
   <script>
+    "use strict";
+
     const SUPABASE_URL =
       "https://fzxhrjwagrz.supabase.co";
 
-    // Replace this placeholder with the existing publishable/anon key
-    // from the SAME Supabase project. Never use a secret/service-role key.
     const SUPABASE_KEY =
       "sb_publishable_X0YDa_Rknxmp3RVav9JHvg_DTh8qeOX";
 
+    const FUNCTION_URL =
+      SUPABASE_URL + "/functions/v1/loan-application-notify";
+
     const form = document.getElementById("loanForm");
-    const message = document.getElementById("formMessage");
-    const button = document.getElementById("submitButton");
+    const submitBtn = document.getElementById("submitBtn");
+    const statusBox = document.getElementById("status");
+
+    function showStatus(message, type) {
+      statusBox.textContent = message;
+      statusBox.className = "status " + type;
+    }
+
+    function digitsCount(value) {
+      return (value.match(/[0-9]/g) || []).length;
+    }
 
     form.addEventListener("submit", async function (event) {
       event.preventDefault();
 
-      if (
-        SUPABASE_KEY ===
-        "sb_publishable_X0YDa_Rknxmp3RVav9JHvg_DTh8qeOX"
-      ) {
-        message.textContent =
-          "Website setup is incomplete. Please try again later.";
+      statusBox.className = "status";
+      statusBox.textContent = "";
+
+      const fullName = document
+        .getElementById("full_name")
+        .value.trim()
+        .replace(/\s+/g, " ");
+
+      const phone = document.getElementById("phone").value.trim();
+      const network = document.getElementById("network").value;
+      const details = document.getElementById("details").value.trim();
+      const consent = document.getElementById("consent").checked;
+      const website = document.getElementById("website").value;
+
+      if (fullName.length < 2 || fullName.length > 100) {
+        showStatus("Please enter a valid full name.", "error");
         return;
       }
 
-      button.disabled = true;
-      message.textContent = "Submitting your enquiry...";
+      if (!/^[0-9+\s()\-]+$/.test(phone) ||
+          digitsCount(phone) < 7 ||
+          digitsCount(phone) > 15) {
+        showStatus("Please enter a valid phone number.", "error");
+        return;
+      }
+
+      if (details.length > 500) {
+        showStatus("Please shorten your additional details.", "error");
+        return;
+      }
+
+      if (!consent) {
+        showStatus(
+          "Please read and accept the consent statement before submitting.",
+          "error"
+        );
+        return;
+      }
+
+      if (!SUPABASE_KEY ||
+          SUPABASE_KEY === "PASTE_YOUR_EXISTING_PUBLISHABLE_OR_ANON_KEY_HERE") {
+        showStatus(
+          "Website setup is incomplete. Please try again later.",
+          "error"
+        );
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Submitting...";
 
       try {
-        const response = await fetch(
-          SUPABASE_URL +
-            "/functions/v1/loan-application-notify",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "apikey": SUPABASE_KEY
-            },
-            body: JSON.stringify({
-              full_name:
-                document.getElementById("full_name").value.trim(),
-              phone:
-                document.getElementById("phone").value.trim(),
-              details:
-                document.getElementById("details").value.trim(),
-              website:
-                document.getElementById("website").value.trim(),
-              consent:
-                document.getElementById("consent").checked
-            })
+        const response = await fetch(FUNCTION_URL, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "apikey": SUPABASE_KEY
+          },
+          body: JSON.stringify({
+            full_name: fullName,
+            phone: phone,
+            network: network,
+            details: details,
+            consent: true,
+            website: website
+          })
+        });
+
+        const result = await response.json().catch(function () {
+          return {};
+        });
+
+        if (!response.ok || result.success !== true) {
+          if (response.status === 401 || response.status === 403) {
+            throw new Error(
+              "The server rejected the request. The website administrator needs to check the function's access settings."
+            );
           }
-        );
 
-        const result = await response.json();
-
-        if (!response.ok || !result.success) {
           throw new Error(
-            result.error || "Your enquiry could not be submitted."
+            result.error ||
+            "Your enquiry could not be submitted. Please try again later."
           );
         }
 
-        message.textContent =
-          "Your enquiry was submitted successfully. Please wait for the team to contact you.";
-
         form.reset();
+        showStatus(
+          "Your enquiry has been submitted. This confirms receipt only, not loan approval. Please wait for the website operator to contact you.",
+          "success"
+        );
       } catch (error) {
-        message.textContent =
+        console.error("Loan enquiry submission failed:", error);
+
+        showStatus(
           error.message ||
-          "Unable to submit right now. Please try again later.";
+          "Connection problem. Please check your internet and try again.",
+          "error"
+        );
       } finally {
-        button.disabled = false;
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Submit Enquiry";
       }
     });
   </script>
